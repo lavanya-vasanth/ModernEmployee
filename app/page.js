@@ -166,7 +166,7 @@ export default function HomePage() {
               overflowWrap: 'break-word',
             }}
           >
-           "The Admin Dashboard for Employee Records has completely streamlined how we handle employee data — efficient, intuitive, and secure. A must-have tool for any organization!" 
+          &quot;"The Admin Dashboard for Employee Records has completely streamlined how we handle employee data — efficient, intuitive, and secure. A must-have tool for any organization!" 
           </blockquote>
         </div>
       </div>

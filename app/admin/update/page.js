@@ -1,6 +1,7 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
 export default function UpdateEmployee() {
@@ -64,107 +65,18 @@ export default function UpdateEmployee() {
           placeholder="Email"
         /><br />
         <input className="file-input" type="file" accept="image/*" onChange={handleFileChange} /><br />
-        {preview && <img src={preview} alt="Preview" className="preview-img" />}<br />
+        {preview && (
+          <Image
+            src={preview}
+            alt="Preview"
+            width={100}
+            height={100}
+            className="preview-img"
+            unoptimized
+          />
+        )}<br />
         <button onClick={handleSubmit}>Update</button>
       </div>
-
-      {/* Global Styles */}
-      <style jsx global>{`
-        html, body {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          font-family: 'Poppins', sans-serif;
-        }
-      `}</style>
-
-      {/* Component Styles */}
-      <style jsx>{`
-        .page-wrapper {
-          min-height: 100vh;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: url('/create1.jpg') no-repeat center center/cover;
-          background-attachment: fixed;
-          padding: 20px;
-        }
-
-        .update-container {
-          width: 100%;
-          max-width: 900px;
-          padding: 30px;
-          background: rgba(255, 255, 255, 0.92);
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          text-align: center;
-        }
-
-        h1 {
-          margin-bottom: 20px;
-          color: #333;
-          font-size: 2rem;
-        }
-
-        .form-input {
-          width: 100%;
-          height: 50px;
-          padding: 10px 12px;
-          margin: 10px 0;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-size: 1rem;
-          outline: none;
-          transition: border 0.3s ease;
-          box-sizing: border-box;
-        }
-
-        .form-input:focus {
-          border-color: #e11d48;
-        }
-
-        .file-input {
-          width: 100%;
-          margin: 10px 0;
-        }
-
-        .preview-img {
-          margin-top: 10px;
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          border: 2px solid #eee;
-          object-fit: cover;
-        }
-
-        button {
-          margin-top: 16px;
-          padding: 12px 30px;
-          background-color: #e11d48;
-          color: #fff;
-          border: none;
-          border-radius: 30px;
-          font-size: 1rem;
-          cursor: pointer;
-          font-weight: 600;
-          transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-          background-color: #be123c;
-        }
-
-        @media (max-width: 500px) {
-          .update-container {
-            padding: 20px;
-            max-width: 95%;
-          }
-          .form-input {
-            height: 45px;
-          }
-        }
-      `}</style>
     </div>
   );
 }

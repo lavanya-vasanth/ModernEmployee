@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
 export default function AdminDashboard() {
@@ -22,7 +23,7 @@ export default function AdminDashboard() {
     <div className="admin-dashboard">
       <div className="header-container">
         <h1>Admin Dashboard</h1>
-        <Link href="/admin/create" passHref>
+        <Link href="/admin/create">
           <button className="create-btn">Create Employee</button>
         </Link>
       </div>
@@ -30,12 +31,19 @@ export default function AdminDashboard() {
       <ul>
         {employees.map((emp) => (
           <li key={emp.id}>
-            <img src={emp.photo} alt={`Photo of ${emp.name}`} />
+            <Image
+              src={emp.photo}
+              alt={`Photo of ${emp.name}`}
+              width={100}
+              height={100}
+              style={{ borderRadius: '50%', objectFit: 'cover' }}
+              unoptimized
+            />
             <div><strong>{emp.name}</strong></div>
             <div className="id">ID: {emp.id}</div>
             <div className="role">{emp.role}</div>
             <div className="email">{emp.email}</div>
-            <Link href={`/admin/update?id=${emp.id}`} passHref>
+            <Link href={`/admin/update?id=${emp.id}`}>
               <button>Edit</button>
             </Link>
             <button onClick={() => handleDelete(emp.id)}>Delete</button>
