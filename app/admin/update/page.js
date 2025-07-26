@@ -74,7 +74,6 @@ export default function UpdateEmployee() {
         <button onClick={handleSubmit}>Update</button>
       </div>
 
-      {/* Global Styles */}
       <style jsx global>{`
         html, body {
           height: 100%;
@@ -84,7 +83,6 @@ export default function UpdateEmployee() {
         }
       `}</style>
 
-      {/* Component Styles */}
       <style jsx>{`
         .page-wrapper {
           min-height: 100vh;
