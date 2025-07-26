@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';               // <-- Import Image
 import { getEmployees } from '../../../utils/employeesStorage';
 
 export default function UserDashboard() {
@@ -31,7 +32,15 @@ export default function UserDashboard() {
         {filteredEmployees.length > 0 ? (
           filteredEmployees.map((emp) => (
             <li key={emp.id} className="employee-card">
-              <img src={emp.photo} alt={emp.name} className="employee-photo" />
+              <Image
+                src={emp.photo}
+                alt={emp.name}
+                width={100}
+                height={100}
+                className="employee-photo"
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+                unoptimized                 // Important for base64 or external images without config
+              />
               <div className="employee-info">
                 <strong>{emp.name}</strong>
                 <div>ID: {emp.id}</div>
