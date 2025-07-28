@@ -1,6 +1,4 @@
 // utils/employeesStorage.js
-import { employeeData } from '../data/employees';
-
 const STORAGE_KEY = 'employees';
 
 export function getEmployees() {
