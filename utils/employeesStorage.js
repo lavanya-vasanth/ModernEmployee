@@ -8,7 +8,7 @@ const defaultEmployees = [
     name: 'John Doe',
    role: 'Developer',
     email: 'john@example.com',
-     photo: ''
+     photo: '/Dhana.jpg'
    }
 ];
 
