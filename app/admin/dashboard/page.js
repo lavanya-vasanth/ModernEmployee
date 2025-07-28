@@ -1,9 +1,7 @@
-// app/admin/dashboard/page.js
 'use client';
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';          // Import Image component
+import Image from 'next/image';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
 export default function AdminDashboard() {
@@ -23,15 +21,17 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
-      <h1>Admin Dashboard</h1>
-      <Link href="/admin/create">
-        <button>Create Employee</button>
-      </Link>
+      <div className="header-container">
+        <h1>Admin Dashboard</h1>
+        <Link href="/admin/create">
+          <button className="create-btn">Create Employee</button>
+        </Link>
+      </div>
 
       <ul>
-        {employees.map(emp => (
-          <li key={emp.id} style={{ marginBottom: '20px' }}>
-            <Image
+        {employees.map((emp) => (
+          <li key={emp.id}>
+            <img
               src={emp.photo}
               alt={`Photo of ${emp.name}`}
               width={100}
@@ -39,9 +39,9 @@ export default function AdminDashboard() {
               style={{ borderRadius: '50%', objectFit: 'cover' }}
             />
             <div><strong>{emp.name}</strong></div>
-            <div>ID: {emp.id}</div>
-            <div>{emp.role}</div>
-            <div>{emp.email}</div>
+            <div className="id">ID: {emp.id}</div>
+            <div className="role">{emp.role}</div>
+            <div className="email">{emp.email}</div>
             <Link href={`/admin/update?id=${emp.id}`}>
               <button>Edit</button>
             </Link>

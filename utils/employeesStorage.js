@@ -1,16 +1,6 @@
 // utils/employeesStorage.js
 const STORAGE_KEY = 'employees';
 
-const defaultEmployees = [
-  {
-    id: '1',
-    name: 'John Doe',
-    role: 'Developer',
-    email: 'john@example.com',
-    photo: '/Dhana.jpg', // make sure this image is inside the 'public' folder
-  },
-];
-
 export function getEmployees() {
   if (typeof window !== 'undefined') {
     try {
@@ -18,15 +8,16 @@ export function getEmployees() {
       if (stored) {
         return JSON.parse(stored);
       } else {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultEmployees));
-        return defaultEmployees;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(employeeData));
+        return employeeData;
       }
     } catch (error) {
       console.error('Error accessing localStorage:', error);
-      return defaultEmployees;
+      return employeeData;
     }
   }
-  // For SSR return empty array
+
+  // During SSR (server), return empty array or default
   return [];
 }
 
