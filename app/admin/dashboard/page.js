@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
 export default function AdminDashboard() {
@@ -31,13 +30,12 @@ export default function AdminDashboard() {
       <ul>
         {employees.map((emp) => (
           <li key={emp.id}>
-            <Image
+            <img
               src={emp.photo}
               alt={`Photo of ${emp.name}`}
               width={100}
               height={100}
               style={{ borderRadius: '50%', objectFit: 'cover' }}
-              unoptimized
             />
             <div><strong>{emp.name}</strong></div>
             <div className="id">ID: {emp.id}</div>
