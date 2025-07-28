@@ -1,6 +1,5 @@
 'use client';
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { employeeData } from '../data/employees';
 
 const EmployeesContext = createContext(null);
 
