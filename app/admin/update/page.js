@@ -13,9 +13,8 @@ function UpdateEmployeeContent() {
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
-    if (!id) return;
     const employees = getEmployees();
-    const emp = employees.find(e => String(e.id) === String(id));
+    const emp = employees.find((e) => String(e.id) === String(id));
     if (emp) {
       setForm(emp);
       setPreview(emp.photo);
@@ -41,7 +40,7 @@ function UpdateEmployeeContent() {
       alert('Please fill all fields');
       return;
     }
-    const employees = getEmployees().map(emp => emp.id === form.id ? form : emp);
+    const employees = getEmployees().map((emp) => (emp.id === form.id ? form : emp));
     saveEmployees(employees);
     router.push('/admin/dashboard');
   };
