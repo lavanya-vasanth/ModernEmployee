@@ -1,6 +1,7 @@
 'use client';
+
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
 export default function UpdateEmployee() {
@@ -12,13 +13,15 @@ export default function UpdateEmployee() {
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
-    const employees = getEmployees();
-    const employee = employees.find(emp => emp.id === id);
+    const employee = getEmployees().find(emp => emp.id === id);
     if (employee) {
       setForm(employee);
       setPreview(employee.photo);
+    } else {
+      alert('Employee not found');
+      router.push('/admin/dashboard');
     }
-  }, [id]);
+  }, [id, router]);
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -32,20 +35,17 @@ export default function UpdateEmployee() {
   };
 
   const handleUpdate = () => {
-    if (!form.id || !form.name || !form.role || !form.email || !form.photo) {
-      alert('Please fill all fields');
-      return;
-    }
-    const employees = getEmployees();
-    const updated = employees.map(emp => (emp.id === id ? form : emp));
-    saveEmployees(updated);
+    const updatedList = getEmployees().map(emp =>
+      emp.id === id ? form : emp
+    );
+    saveEmployees(updatedList);
     router.push('/admin/dashboard');
   };
 
   return (
     <div className="update-employee">
       <h1>Update Employee</h1>
-      <input placeholder="ID" value={form.id} readOnly />
+      <input placeholder="ID" value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} />
       <input placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
       <input placeholder="Role" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
       <input placeholder="Email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
