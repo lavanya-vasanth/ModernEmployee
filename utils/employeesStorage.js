@@ -1,15 +1,14 @@
+// utils/employeesStorage.js
 const STORAGE_KEY = 'employees';
 
-// Define some default employee data if you want, otherwise use empty array
 const defaultEmployees = [
-  // Example default employee, or leave empty []
-   {
+  {
     id: '1',
     name: 'John Doe',
-   role: 'Developer',
+    role: 'Developer',
     email: 'john@example.com',
-     photo: '/Dhana.jpg'
-   }
+    photo: '/Dhana.jpg', // make sure this image is inside the 'public' folder
+  },
 ];
 
 export function getEmployees() {
@@ -19,7 +18,6 @@ export function getEmployees() {
       if (stored) {
         return JSON.parse(stored);
       } else {
-        // If nothing in localStorage, set defaultEmployees as initial data
         localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultEmployees));
         return defaultEmployees;
       }
@@ -28,8 +26,7 @@ export function getEmployees() {
       return defaultEmployees;
     }
   }
-
-  // During SSR (server), return empty array or default
+  // For SSR return empty array
   return [];
 }
 
