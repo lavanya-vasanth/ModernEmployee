@@ -3,13 +3,13 @@ const STORAGE_KEY = 'employees';
 // Define some default employee data if you want, otherwise use empty array
 const defaultEmployees = [
   // Example default employee, or leave empty []
-  // {
-  //   id: '1',
-  //   name: 'John Doe',
-  //   role: 'Developer',
-  //   email: 'john@example.com',
-  //   photo: ''
-  // }
+   {
+    id: '1',
+    name: 'John Doe',
+   role: 'Developer',
+    email: 'john@example.com',
+     photo: ''
+   }
 ];
 
 export function getEmployees() {
