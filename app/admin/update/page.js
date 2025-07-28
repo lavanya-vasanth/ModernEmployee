@@ -1,20 +1,20 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getEmployees, saveEmployees } from '../../../utils/employeesStorage';
 
-export default function UpdateEmployee() {
-  const searchParams = useSearchParams();
+export default function UpdateEmployee({ searchParams }) {
   const router = useRouter();
-  const id = searchParams.get('id');
+  const id = typeof window !== 'undefined' 
+    ? new URLSearchParams(window.location.search).get('id') 
+    : null;
 
   const [form, setForm] = useState({ id: '', name: '', role: '', email: '', photo: '' });
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
+    if (!id) return;
     const employees = getEmployees();
     const employee = employees.find((e) => e.id === id);
     if (employee) {
