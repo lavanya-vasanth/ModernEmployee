@@ -19,7 +19,7 @@ export function getEmployees() {
     }
   }
 
-  // Return empty array or default data during SSR
+  // During SSR (server), return empty array or default
   return [];
 }
 
