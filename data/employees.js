@@ -6,13 +6,13 @@ export const employeeData = [
     name: 'John Doe',
     role: 'Software Engineer',
     email: 'john@example.com',
-    photo: '/default-avatar.png', // Ensure this image is in /public
+    photo: '/dhachu.jpg', // Ensure this image is in /public
   },
   {
     id: '2',
     name: 'Jane Smith',
     role: 'Project Manager',
     email: 'jane@example.com',
-    photo: '/default-avatar.png',
+    photo: '/Dhana.jpg',
   }
 ];

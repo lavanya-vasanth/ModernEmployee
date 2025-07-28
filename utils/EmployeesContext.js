@@ -48,3 +48,4 @@ export function useEmployees() {
   if (!context) throw new Error('useEmployees must be used inside EmployeesProvider');
   return context;
 }
+
