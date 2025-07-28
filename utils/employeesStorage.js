@@ -1,5 +1,16 @@
-// utils/employeesStorage.js
 const STORAGE_KEY = 'employees';
+
+// Define some default employee data if you want, otherwise use empty array
+const defaultEmployees = [
+  // Example default employee, or leave empty []
+  // {
+  //   id: '1',
+  //   name: 'John Doe',
+  //   role: 'Developer',
+  //   email: 'john@example.com',
+  //   photo: ''
+  // }
+];
 
 export function getEmployees() {
   if (typeof window !== 'undefined') {
@@ -8,12 +19,13 @@ export function getEmployees() {
       if (stored) {
         return JSON.parse(stored);
       } else {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(employeeData));
-        return employeeData;
+        // If nothing in localStorage, set defaultEmployees as initial data
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultEmployees));
+        return defaultEmployees;
       }
     } catch (error) {
       console.error('Error accessing localStorage:', error);
-      return employeeData;
+      return defaultEmployees;
     }
   }
 
